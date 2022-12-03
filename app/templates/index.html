@@ -4,11 +4,27 @@
     <meta charset="UTF-8">
     <title>solarcalc</title>
 
+    <link rel="stylesheet" href="static/css/ol.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
-<body>
-    <div style="width: 100%; text-align: center">
-        <p>Welcome to solarcalc!</p>
+<body style="padding: 0; margin: 0">
+    <div style="width: 100vw; text-align: center">
+        <h1>Welcome to solarcalc!</h1>
     </div>
+
+    <div id="map" class="map" style="width: 100vw; height: 80vh; position: absolute"></div>
+    <script src="static/js/ol.js"></script>
+    <script>
+        var view = new ol.View({
+          center: ol.proj.transform([13.737262, 51.050407], 'EPSG:4326', 'EPSG:3857'),
+          zoom: 12
+        });
+        map = new ol.Map({
+            target: 'map',
+            layers: [new ol.layer.Tile({source: new ol.source.OSM()})],
+            view: view
+        });
+
+    </script>
 </body>
 </html>
