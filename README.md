@@ -14,8 +14,8 @@ installation of Python 3, start by installing the Python dependencies:
 $ pip install -r requirements.txt
 ```
 
-Then, navigate into the `app` directory. From there, you can run a debugging 
-server by executing
+Then, navigate into the `app` directory. From there, you can run a 
+development server by executing
 
 ```
 $ flask --app main run
