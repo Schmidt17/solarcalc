@@ -20,7 +20,10 @@ server by executing
 ```
 $ flask --app main run
  * Serving Flask app 'main'
- * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5000
+Press CTRL+C to quit
 ```
 
 The server tells you that it's running on your local machine and is listening
