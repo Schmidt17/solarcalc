@@ -5,6 +5,7 @@
     <title>solarcalc</title>
 
     <link rel="stylesheet" href="static/css/ol.css" />
+    <link rel="stylesheet" href="static/css/ol-ext.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body style="padding: 0; margin: 0">
@@ -13,18 +14,9 @@
     </div>
 
     <div id="map" class="map" style="width: 100vw; height: 80vh; position: absolute"></div>
+    
     <script src="static/js/ol.js"></script>
-    <script>
-        var view = new ol.View({
-          center: ol.proj.transform([13.737262, 51.050407], 'EPSG:4326', 'EPSG:3857'),
-          zoom: 12
-        });
-        map = new ol.Map({
-            target: 'map',
-            layers: [new ol.layer.Tile({source: new ol.source.OSM()})],
-            view: view
-        });
-
-    </script>
+    <script src="static/js/ol-ext.min.js"></script>
+    <script src="static/js/main.js"></script>
 </body>
 </html>
