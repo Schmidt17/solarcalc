@@ -4,16 +4,30 @@
     <meta charset="UTF-8">
     <title>solarcalc</title>
 
+    <link rel="stylesheet" href="static/css/materialize.min.css" />
     <link rel="stylesheet" href="static/css/ol.css" />
     <link rel="stylesheet" href="static/css/ol-ext.min.css" />
+
+    <script src="static/js/materialize.min.js"></script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body style="padding: 0; margin: 0">
-    <div style="width: 100vw; text-align: center">
-        <h1>Welcome to solarcalc!</h1>
-    </div>
+    <div class="container"> 
+        <div class="row center">
+            <h1>Welcome to solarcalc!</h1>
+        </div>
 
-    <div id="map" class="map" style="width: 100vw; height: 80vh; position: absolute"></div>
+        <div class="row">
+            <div class="col l6">
+                <div id="map" class="map card-panel" style="padding: 0; height: 80vh;"></div>
+            </div>
+
+            <div class="col l6 border">
+                <div class="card-panel" style="height: 80vh;">The results will be here</div>
+            </div>
+        </div>
+    </div>
     
     <script src="static/js/ol.js"></script>
     <script src="static/js/ol-ext.min.js"></script>
