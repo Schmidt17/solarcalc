@@ -25,6 +25,8 @@ var search = new ol.control.SearchNominatim({  // geocoding service by OpenStree
 map.addControl(search);
 
 search.on('select', function(e) {
+    search.collapse();  // collapse the search widget for a better view of the map
+
     clearMarkers();
     addMarker(e.coordinate);
     

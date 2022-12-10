@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <title>solarcalc</title>
 
-    <link rel="stylesheet" href="static/css/materialize.min.css" />
-    <link rel="stylesheet" href="static/css/ol.css" />
-    <link rel="stylesheet" href="static/css/ol-ext.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ol.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ol-ext.min.css') }}" />
 
-    <script src="static/js/materialize.min.js"></script>
+    <script src="{{ url_for('static', filename='js/materialize.min.js') }}"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
@@ -30,7 +30,7 @@
     </div>
     
     <script src="static/js/ol.js"></script>
-    <script src="static/js/ol-ext.min.js"></script>
-    <script src="static/js/main.js"></script>
+    <script src="{{ url_for('static', filename='js/ol-ext.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
