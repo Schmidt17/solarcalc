@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <title>solarcalc</title>
 
+    <style>
+        @font-face {
+          font-family: 'Material Icons';
+          font-style: normal;
+          font-weight: 400;
+          src: url({{ url_for('static', filename='fonts/material-icons.woff2') }}) format('woff2');
+        }
+    </style>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/material-icons.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/ol.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/ol-ext.min.css') }}" />
@@ -24,7 +34,79 @@
             </div>
 
             <div class="col l6 m12 s12">
-                <div class="card-panel" style="height: 80vh;">The results will be here</div>
+                <div class="card" style="margin-bottom: 2rem">
+                    <div class="card-tabs">
+                      <ul class="tabs tabs-fixed-width">
+                        <li class="tab"><a class="active" href="#cell1">Solar cell 1</a></li>
+                        <li class="tab"><a href="#cell2">Solar cell 2</a></li>
+                      </ul>
+                    </div>
+                    
+
+                    <div class="card-content">
+                        <div id="cell1">
+                            <div class="row">
+                                <div class="input-field col l12 m12 s12">
+                                    <input type="text" id="input-cell-1-power" required />
+                                    <label for="input-cell-1-power">Solar cell nominal power in W</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col l6 m6 s6">
+                                    <input type="text" id="input-cell-1-inclination" required />
+                                    <label for="input-cell-1-inclination">Inclination in ° from horizontal</label>
+                                </div>
+
+                                <div class="input-field col l6 m6 s6">
+                                    <input type="text" id="input-cell-1-azimuth" required />
+                                    <label for="input-cell-1-azimuth">Azimuth in ° from North</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="cell2">
+                            <div class="row">
+                                <div class="input-field col l12 m12 s12">
+                                    <input type="text" id="input-cell-2-power" required />
+                                    <label for="input-cell-2-power">Solar cell nominal power in W</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col l6 m6 s6">
+                                    <input type="text" id="input-cell-2-inclination" required />
+                                    <label for="input-cell-2-inclination">Inclination in ° from horizontal</label>
+                                </div>
+
+                                <div class="input-field col l6 m6 s6">
+                                    <input type="text" id="input-cell-2-azimuth" required />
+                                    <label for="input-cell-2-azimuth">Azimuth in ° from North</label>
+                                </div>
+                            </div>
+                        </div>
+
+                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Battery</span>
+
+                        <div class="row">
+                            <div class="input-field col l6 m6 s6">
+                                <input type="text" id="battery-capacity" required />
+                                <label for="battery-capacity">Capacity in Wh</label>
+                            </div>
+
+                            <div class="input-field col l6 m6 s6">
+                                <input type="text" id="battery-power" required />
+                                <label for="battery-power">In/Out power in W</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

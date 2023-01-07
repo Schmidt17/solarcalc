@@ -1,3 +1,8 @@
+document.addEventListener('DOMContentLoaded', function() {
+     var elems = document.querySelectorAll('.tabs');
+     var instance = M.Tabs.init(elems);
+});
+
 const ddCoords = [13.737262, 51.050407];
 var view = new ol.View({
     center: ol.proj.fromLonLat(ddCoords),
