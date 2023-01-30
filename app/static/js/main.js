@@ -6,7 +6,16 @@ document.addEventListener('DOMContentLoaded', function() {
      var datepicker_instances = M.Datepicker.init(datepicker_elems, {autoClose: true});
 });
 
+var currentCoords = [];
+function setCurrentCoords(newCoords) {
+    currentCoords = newCoords;
+
+    let formElt = document.getElementById("coordinates");
+    formElt.value = JSON.stringify(currentCoords);
+}
+
 const ddCoords = [13.737262, 51.050407];
+setCurrentCoords(ddCoords);
 var view = new ol.View({
     center: ol.proj.fromLonLat(ddCoords),
     zoom: 12
@@ -33,6 +42,9 @@ var search = new ol.control.SearchNominatim({  // geocoding service by OpenStree
 map.addControl(search);
 
 search.on('select', function(e) {
+    // set the new coordinates as the current coordinates
+    setCurrentCoords(ol.proj.toLonLat(e.coordinate))
+
     search.collapse();  // collapse the search widget for a better view of the map
 
     clearMarkers();
