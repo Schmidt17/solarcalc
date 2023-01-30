@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
      var tab_instance = M.Tabs.init(tab_elems);
 
      var datepicker_elems = document.querySelectorAll('.datepicker');
-     var datepicker_instances = M.Datepicker.init(datepicker_elems);
+     var datepicker_instances = M.Datepicker.init(datepicker_elems, {autoClose: true});
 });
 
 const ddCoords = [13.737262, 51.050407];
