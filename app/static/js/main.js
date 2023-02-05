@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
      var datepicker_elems = document.querySelectorAll('.datepicker');
      var datepicker_instances = M.Datepicker.init(datepicker_elems, {autoClose: true});
+
+     var tt_elems = document.querySelectorAll('.tooltipped');
+     var tt_instances = M.Tooltip.init(tt_elems, {});
 });
 
 var currentCoords = [];
