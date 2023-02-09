@@ -3,7 +3,7 @@
 """
 
 import pandas as pd
-import solar_calculation.solar as sol
+import solar_calculation.solar_cell as sol
 
 def calculate_solar_benefits(latitude: float,
                              longitude: float,
@@ -28,12 +28,12 @@ def calculate_solar_benefits(latitude: float,
 
     # calculate total produced solar energy
     gen_sol_energy = pwr_tbl["solar_power"].sum()
-    print(f"With given inputs you have generated {gen_sol_energy} kWh solar energy")
+    print(f"With given inputs you have generated {gen_sol_energy:.1f} kWh solar energy")
 
     # calculate expected savings
     self_use_ratio = 0.3
     savings = gen_sol_energy * self_use_ratio * energy_cost
-    print(f"You made savings of {savings} EUR by using {self_use_ratio*100} % of your produced solar energy")
+    print(f"You made savings of {savings:.2f} EUR by using {self_use_ratio*100} % of your produced solar energy")
 
     return {"gen_sol_energy": gen_sol_energy,
             "savings": savings}
