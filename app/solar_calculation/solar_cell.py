@@ -1,3 +1,7 @@
+"""
+ module for handling of solar cell data, related calculations, and functions
+"""
+
 from numpy import cos, sin, deg2rad
 import pandas as pd
 
@@ -34,7 +38,6 @@ class SolarCell:
         if not 0 <= inclination <= 90:
             raise ValueError(f"SolarCell Error: solar cell inclination must be in between 0deg to 90deg, but is {inclination}.")
 
-
 def calc_sc_power(sun_az, sun_el, sun_minutes, sc: SolarCell) ->float:
     # check sun is up
     if sun_el <= 0:
@@ -50,22 +53,27 @@ def calc_sc_power(sun_az, sun_el, sun_minutes, sc: SolarCell) ->float:
     else:
         return cos_gamma * sc.pkpower_kW * sun_minutes / 60
 
-def get_solar_power_table(latitude, longitude, timezone, start_day, end_day, solar_cells: list) ->pd.DataFrame:
+def generate_solar_power_table(latitude, longitude, timezone, start_day, end_day, solar_cells: list) ->pd.DataFrame:
     """ calculates solar power for every hour within given time range and returns as DataFrame """
 
+    # prepare table with sun position and sun minutes data
     sunpos_tbl = get_sun_positions(latitude= latitude,
-                                      longitude = longitude,
-                                      timezone = timezone,
-                                      start_day=start_day,
-                                      end_day=end_day)
+                                   longitude = longitude,
+                                   timezone = timezone,
+                                   start_day = start_day,
+                                   end_day = end_day)
 
-    sunminutes = get_sun_minutes(start_day=start_day,
-                                    end_day=end_day)
+    sunminutes = get_sun_minutes(start_day = start_day,
+                                 end_day  =end_day)
 
     power_tbl = sunpos_tbl.merge(sunminutes)
 
+    # calculate power of each solar cell
     for i, sc in enumerate(solar_cells):
         power_tbl[f"sc{i+1}"] = [ calc_sc_power(row["sun_az"], row["sun_el"], row["sun_minutes"], sc) for i, row in power_tbl.iterrows()   ]
+
+    # calculate sum of all solar cells
+    power_tbl["solar_power"] = power_tbl[ [f"sc{i+1}" for i in range(len(solar_cells))] ].apply(sum, axis = 1)
 
     return power_tbl
 
