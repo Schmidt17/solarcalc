@@ -4,7 +4,43 @@ document.addEventListener('DOMContentLoaded', function() {
 
      var datepicker_elems = document.querySelectorAll('.datepicker');
      var datepicker_instances = M.Datepicker.init(datepicker_elems, {autoClose: true});
+
+     var tt_elems = document.querySelectorAll('.tooltipped');
+     var tt_instances = M.Tooltip.init(tt_elems, {});
+
+     updateSubmitButtonColor();
+
+     // add event listeners to all required fields, to trigger submit button color change on validation
+     var reqFields = document.querySelectorAll('input[required]');
+     for (const field of reqFields) {
+        field.addEventListener('input', updateSubmitButtonColor);
+        field.addEventListener('propertychange', updateSubmitButtonColor);  // for IE9 and below
+     }
+     for (const field of datepicker_elems) {
+        field.addEventListener('change', updateSubmitButtonColor);
+     }
 });
+
+function updateSubmitButtonColor() {
+    var reqFields = document.querySelectorAll('input[required]');
+    
+    var inputsValid = true;
+    for (const field of reqFields) {
+        if (field.value == "") {
+            inputsValid = false;
+            break;
+        }
+    }
+
+    const submButton = document.getElementById('submit-button');
+
+    if (inputsValid) {
+        submButton.classList.replace("gray", "red");
+    } else {
+        submButton.classList.replace("red", "gray");
+    }
+}
+
 
 var currentCoords = [];
 function setCurrentCoords(newCoords) {

@@ -9,4 +9,4 @@ def index():
         return render_template('index.html')
 
     elif request.method == 'POST':
-        return json.dumps(request.form)
+        return render_template('results.html', input_dict=request.form, results_dict={})
