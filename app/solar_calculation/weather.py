@@ -29,14 +29,12 @@ def get_sun_minutes(start_day, end_day) -> pd.DataFrame:
     dates_df['day_of_year'] = dates_df['timestamp_day'].dt.day_of_year
 
     data_matched = dates_df.merge(data, on='day_of_year', how='inner',
-                                  suffixes=('_date', ''))  
+                                  suffixes=('_date', ''))
 
-    sun_minutes = data_matched[["timestamp", "sun_minutes"]].copy()
+    # combine the day of the requested date range with the time of day from the weather data
+    data_matched['timestamp'] = data_matched['timestamp_day'] + \
+                               (data_matched['timestamp'] - data_matched['timestamp'].dt.normalize())
 
-    start_offset = start_day - sun_minutes["timestamp"].min()
-    sun_minutes["timestamp"] = sun_minutes["timestamp"] + start_offset
+    sun_minutes = data_matched[["timestamp", "sun_minutes"]]
 
     return sun_minutes
-
-
-
