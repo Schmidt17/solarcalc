@@ -19,7 +19,15 @@ def index():
         return render_template('results.html', input_dict=request.form, results_dict=results_dict)
 
 
-def process(input_dict):
+def process(input_dict: dict) -> dict:
+    """Interprets the dict with the user inputs and feeds it to the results calculation
+    
+    Args:
+        input_dict: The dictionary with form data as received from the client
+
+    Returns:
+        A dict with the results of the solar benefit calculation
+    """
     longitude, latitude = json.loads(input_dict['coordinates'])
 
     start_day = pd.Timestamp(input_dict['date-start'])
