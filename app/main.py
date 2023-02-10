@@ -2,8 +2,9 @@ from flask import Flask, render_template, request
 import json
 import pandas as pd
 
-import solar_calculation.solar_benefits as sb
+from solar_calculation.solar_benefits import calculate_solar_benefits
 from solar_calculation.solar_cell import SolarCell
+
 
 app = Flask(__name__)
 
@@ -32,7 +33,7 @@ def process(input_dict):
         )
     ]
 
-    results_dict = sb.calculate_solar_benefits(
+    results_dict = calculate_solar_benefits(
         latitude=latitude,
         longitude=longitude,
         start_day=start_day,
