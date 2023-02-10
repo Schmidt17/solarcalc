@@ -21,6 +21,9 @@ def index():
 
 def process(input_dict: dict) -> dict:
     """Interprets the dict with the user inputs and feeds it to the results calculation
+
+    Note that this implements a simple input processing for first testing. It is
+    not yet stable against malformed inputs and might crash.
     
     Args:
         input_dict: The dictionary with form data as received from the client
