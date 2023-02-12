@@ -9,15 +9,15 @@
               font-family: 'Material Icons';
               font-style: normal;
               font-weight: 400;
-              src: url({{ url_for('static', filename='fonts/material-icons.woff2', _external=True, _scheme='https') }}) format('woff2');
+              src: url({{ url_for('static', filename='fonts/material-icons.woff2', _external=True) }}) format('woff2');
             }
         </style>
 
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/material-icons.css', _external=True, _scheme='https') }}" />
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css', _external=True, _scheme='https') }}" />
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css', _external=True, _scheme='https') }}" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/material-icons.css', _external=True) }}" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css', _external=True) }}" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css', _external=True) }}" />
 
-        <script src="{{ url_for('static', filename='js/materialize.min.js', _external=True, _scheme='https') }}"></script>
+        <script src="{{ url_for('static', filename='js/materialize.min.js', _external=True) }}"></script>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
@@ -78,8 +78,8 @@
         </div>
         
         <script type="text/javascript">
-            const statusUrl = "{{ url_for('get_status', task_id=task_id, _external=True, _scheme='https') }}"
+            const statusUrl = "{{ url_for('get_status', task_id=task_id, _external=True) }}"
         </script>
-        <script src="{{ url_for('static', filename='js/progress.js', _external=True, _scheme='https') }}"></script>
+        <script src="{{ url_for('static', filename='js/progress.js', _external=True) }}"></script>
     </body>
 </html>
