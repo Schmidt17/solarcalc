@@ -37,7 +37,7 @@ def get_status(task_id):
     job = Job.fetch(task_id, connection=conn)
 
     if job.is_finished:
-        return json.dumps({'task_id': task_id, 'status': 'finished', 'resource': app.url_for('get_result', task_id=task_id, _external=True)}), 303
+        return json.dumps({'task_id': task_id, 'status': 'finished', 'resource': app.url_for('get_result', task_id=task_id, _external=True, _scheme='https')}), 303
     else:
         return json.dumps({'task_id': task_id, 'status': 'running', 'retry_after_s': 2}), 200
 
