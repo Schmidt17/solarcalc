@@ -7,8 +7,13 @@ is calculated based on real weather data.
 ## Getting started
 
 You can run the app locally for debugging (NOTE: the following instructions
-are not suitable for a production release!). Assuming, you have a working
-installation of Python 3, start by installing the Python dependencies:
+are not suitable for a production release!). Start by installing [Redis](https://redis.io/), which
+we use for tracking the status of the long-running server-side calculations.
+Installation instructions for your platform can be found [here](https://redis.io/docs/getting-started/).
+
+
+Assuming, you have a working
+installation of Python 3, proceed by installing the Python dependencies:
 
 ```
 $ pip install -r requirements.txt
