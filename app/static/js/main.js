@@ -46,8 +46,10 @@ var currentCoords = [];
 function setCurrentCoords(newCoords) {
     currentCoords = newCoords;
 
-    let formElt = document.getElementById("coordinates");
-    formElt.value = JSON.stringify(currentCoords);
+    let formEltLon = document.getElementById("location-longitude");
+    let formEltLat = document.getElementById("location-latitude");
+    formEltLon.value = currentCoords[0];
+    formEltLat.value = currentCoords[1];
 }
 
 const ddCoords = [13.737262, 51.050407];

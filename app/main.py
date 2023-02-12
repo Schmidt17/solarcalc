@@ -31,7 +31,8 @@ def process(input_dict: dict) -> dict:
     Returns:
         A dict with the results of the solar benefit calculation
     """
-    longitude, latitude = json.loads(input_dict['coordinates'])
+    latitude = float(input_dict['location-latitude'])
+    longitude = float(input_dict['location-longitude'])
 
     start_day = pd.Timestamp(input_dict['date-start'])
     end_day = pd.Timestamp(input_dict['date-end'])
